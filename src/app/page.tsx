@@ -52,6 +52,7 @@ export default function Home() {
         ) : null}
         <Link
           href="/book"
+          data-testid="primary-book-cta"
           className={`bg-black text-white px-8 py-4 rounded-[var(--radius)] text-lg font-medium hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl animate-slide-up ${
             siteContent.hero.subtitle ? "" : "mt-4"
           }`}

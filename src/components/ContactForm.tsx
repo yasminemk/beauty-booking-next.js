@@ -2,11 +2,17 @@
 
 import { useRef, useState } from "react";
 
+type FieldErrors = {
+  name?: string;
+  email?: string;
+};
+
 export default function ContactForm() {
   const formRef = useRef<HTMLFormElement | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
 
   return (
     <form
@@ -16,16 +22,33 @@ export default function ContactForm() {
         e.preventDefault();
         if (isSubmitting) return;
 
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+        const name = String(formData.get("name") ?? "").trim();
+        const email = String(formData.get("email") ?? "").trim();
+
+        const nextFieldErrors: FieldErrors = {};
+        if (!name) nextFieldErrors.name = "Name is required.";
+        if (!email) nextFieldErrors.email = "Email is required.";
+        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          nextFieldErrors.email = "Please enter a valid email.";
+        }
+
+        if (Object.keys(nextFieldErrors).length > 0) {
+          setFieldErrors(nextFieldErrors);
+          setIsSuccess(false);
+          setErrorMessage(null);
+          return;
+        }
+
         setIsSubmitting(true);
         setIsSuccess(false);
         setErrorMessage(null);
-
-        const form = e.currentTarget;
-        const formData = new FormData(form);
+        setFieldErrors({});
 
         const payload = {
-          name: String(formData.get("name") ?? ""),
-          email: String(formData.get("email") ?? ""),
+          name,
+          email,
           instagramHandle: String(formData.get("instagramHandle") ?? ""),
           message: String(formData.get("message") ?? ""),
           company: String(formData.get("company") ?? ""),
@@ -73,10 +96,10 @@ export default function ContactForm() {
             id="name"
             name="name"
             type="text"
-            required
             maxLength={80}
             className="w-full bg-white border border-gray-200 rounded-[var(--radius)] px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black/10"
           />
+          {fieldErrors.name ? <p className="text-sm text-red-600">{fieldErrors.name}</p> : null}
         </div>
         <div className="space-y-2">
           <label className="text-sm font-medium" htmlFor="email">
@@ -86,10 +109,10 @@ export default function ContactForm() {
             id="email"
             name="email"
             type="email"
-            required
             maxLength={254}
             className="w-full bg-white border border-gray-200 rounded-[var(--radius)] px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black/10"
           />
+          {fieldErrors.email ? <p className="text-sm text-red-600">{fieldErrors.email}</p> : null}
         </div>
       </div>
 
