@@ -18,8 +18,19 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: siteContent.brandName,
+  metadataBase: new URL(siteContent.siteUrl),
+  title: {
+    default: siteContent.brandName,
+    template: `%s | ${siteContent.brandName}`,
+  },
   description: siteContent.hero.title,
+  openGraph: {
+    type: "website",
+    siteName: siteContent.brandName,
+    title: siteContent.brandName,
+    description: siteContent.hero.title,
+    url: siteContent.siteUrl,
+  },
 };
 
 export default function RootLayout({

@@ -1,6 +1,17 @@
 import { siteContent } from "@/content/siteContent";
 import Link from "next/link";
 import { Clock, ArrowRight } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Services",
+  description: "Browse brow and makeup services at LKSTUDIOUK in Salford, Manchester.",
+  openGraph: {
+    title: "Services",
+    description: "Browse brow and makeup services at LKSTUDIOUK in Salford, Manchester.",
+    url: "/services",
+  },
+};
 
 export default function ServicesPage() {
   return (

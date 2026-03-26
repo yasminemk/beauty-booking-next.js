@@ -1,5 +1,16 @@
 import Gallery from "@/components/Gallery";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Gallery",
+  description: "A glimpse into our studio and the transformations we create.",
+  openGraph: {
+    title: "Gallery",
+    description: "A glimpse into our studio and the transformations we create.",
+    url: "/gallery",
+  },
+};
 
 export default function GalleryPage() {
   return (

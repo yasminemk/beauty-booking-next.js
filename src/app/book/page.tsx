@@ -1,5 +1,16 @@
 import { siteContent } from "@/content/siteContent";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Book",
+  description: "Book your appointment with LKSTUDIOUK.",
+  openGraph: {
+    title: "Book",
+    description: "Book your appointment with LKSTUDIOUK.",
+    url: "/book",
+  },
+};
 
 export default function BookPage() {
   const renderWithContactLink = (text: string) => {

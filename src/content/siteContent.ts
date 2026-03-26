@@ -53,10 +53,13 @@ export interface FaqItem {
 
 export interface SiteContent {
   brandName: string;
+  siteUrl: string;
   contact: {
     email: string;
     instagram: string;
+    instagramUrl: string;
     address: string;
+    openingHours: string;
   };
   navLinks: { label: string; href: string }[];
   footerLinks: { label: string; href: string }[];
@@ -75,10 +78,13 @@ export interface SiteContent {
 
 export const siteContent: SiteContent = {
   brandName: process.env.NEXT_PUBLIC_BRAND_NAME || "LKSTUDIOUK",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   contact: {
     email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "lkstudiouk@gmail.com",
     instagram: process.env.NEXT_PUBLIC_INSTAGRAM_HANDLE || "@lkstudio_uk",
+    instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "INSTAGRAM_URL",
     address: process.env.NEXT_PUBLIC_ADDRESS || "Salford, Greater Manchester",
+    openingHours: process.env.NEXT_PUBLIC_OPENING_HOURS || "OPENING_HOURS",
   },
   navLinks: [
     { label: "Home", href: "/" },

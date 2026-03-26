@@ -3,7 +3,7 @@ import { Resend } from "resend";
 
 const MAX_NAME_LENGTH = 80;
 const MAX_EMAIL_LENGTH = 254;
-const MAX_PHONE_LENGTH = 30;
+const MAX_INSTAGRAM_HANDLE_LENGTH = 60;
 const MAX_MESSAGE_LENGTH = 2000;
 
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
@@ -22,9 +22,9 @@ function sanitizeText(input: unknown, maxLength: number) {
   return value;
 }
 
-function sanitizePhone(input: unknown) {
-  const raw = sanitizeText(input, MAX_PHONE_LENGTH);
-  return raw.replace(/[^0-9()+\-\s]/g, "").trim();
+function sanitizeInstagramHandle(input: unknown) {
+  const raw = sanitizeText(input, MAX_INSTAGRAM_HANDLE_LENGTH);
+  return raw.replace(/[^a-zA-Z0-9._@]/g, "").trim();
 }
 
 function isValidEmail(email: string) {
@@ -74,17 +74,30 @@ async function getUpstashLimiter() {
     const dynamicImport = Function(
       "moduleName",
       "return import(moduleName)",
-    ) as unknown as (moduleName: string) => Promise<any>;
+    ) as unknown as (moduleName: string) => Promise<unknown>;
 
-    const [{ Ratelimit }, { Redis }] = await Promise.all([
-      dynamicImport("@upstash/ratelimit"),
-      dynamicImport("@upstash/redis"),
+    type UpstashRatelimitModule = {
+      Ratelimit: {
+        new (options: { redis: unknown; limiter: unknown; prefix: string }): {
+          limit: (identifier: string) => Promise<{ success: boolean }>;
+        };
+        slidingWindow: (limit: number, window: string) => unknown;
+      };
+    };
+
+    type UpstashRedisModule = {
+      Redis: new (options: { url: string; token: string }) => unknown;
+    };
+
+    const [ratelimitModule, redisModule] = await Promise.all([
+      dynamicImport("@upstash/ratelimit") as Promise<UpstashRatelimitModule>,
+      dynamicImport("@upstash/redis") as Promise<UpstashRedisModule>,
     ]);
 
-    const redis = new Redis({ url, token });
-    upstashLimiter = new Ratelimit({
+    const redis = new redisModule.Redis({ url, token });
+    upstashLimiter = new ratelimitModule.Ratelimit({
       redis,
-      limiter: Ratelimit.slidingWindow(RATE_LIMIT_MAX, "10 m"),
+      limiter: ratelimitModule.Ratelimit.slidingWindow(RATE_LIMIT_MAX, "10 m"),
       prefix: "contact",
     });
   } catch {
@@ -131,7 +144,7 @@ export async function POST(request: Request) {
 
   const name = sanitizeText(payload.name, MAX_NAME_LENGTH);
   const email = sanitizeText(payload.email, MAX_EMAIL_LENGTH).toLowerCase();
-  const phone = sanitizePhone(payload.phone);
+  const instagramHandle = sanitizeInstagramHandle(payload.instagramHandle);
   const message = sanitizeText(payload.message, MAX_MESSAGE_LENGTH);
 
   if (!name) {
@@ -161,7 +174,7 @@ export async function POST(request: Request) {
   const ownerText = [
     `Name: ${name}`,
     `Email: ${email}`,
-    phone ? `Phone: ${phone}` : "Phone: (not provided)",
+    instagramHandle ? `Instagram: ${instagramHandle}` : "Instagram: (not provided)",
     "",
     "Message:",
     message || "(not provided)",

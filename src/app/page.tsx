@@ -1,10 +1,45 @@
 import Link from "next/link";
 import { siteContent, ServiceCategory, Testimonial } from "@/content/siteContent";
 import { ArrowRight } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description: "Makeup artist and brow specialist in Salford, Manchester (M7).",
+  openGraph: {
+    title: "LKSTUDIOUK",
+    description: "Makeup artist and brow specialist in Salford, Manchester (M7).",
+    url: "/",
+  },
+};
 
 export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: siteContent.brandName,
+    description: "Makeup artist and brow specialist in Salford, Manchester (M7).",
+    areaServed: "Salford, Manchester, M7",
+    serviceType: ["Makeup Artist", "Brow Specialist"],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Salford",
+      addressRegion: "Manchester",
+      postalCode: "M7",
+      addressCountry: "GB",
+    },
+    url: siteContent.siteUrl,
+    bookingUrl: siteContent.setmoreBookingUrl,
+    sameAs: [siteContent.contact.instagramUrl],
+    openingHours: siteContent.contact.openingHours,
+  };
+
   return (
     <div className="flex flex-col items-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <section className="w-full h-[80vh] flex flex-col items-center justify-center text-center bg-gray-50 px-4">
         <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 tracking-tight animate-fade-in">
@@ -90,7 +125,7 @@ export default function Home() {
                     <span key={i}>★</span>
                   ))}
                 </div>
-                <p className="text-lg text-gray-600 italic mb-6">"{testimonial.text}"</p>
+                <p className="text-lg text-gray-600 italic mb-6">“{testimonial.text}”</p>
                 <p className="font-medium font-serif">{testimonial.name}</p>
               </div>
             ))}

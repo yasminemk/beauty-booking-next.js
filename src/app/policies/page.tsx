@@ -1,5 +1,16 @@
 import { siteContent } from "@/content/siteContent";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Our Policies",
+  description: "Read our booking policies before securing your appointment.",
+  openGraph: {
+    title: "Our Policies",
+    description: "Read our booking policies before securing your appointment.",
+    url: "/policies",
+  },
+};
 
 export default function PoliciesPage() {
   const { intro, items, outroTitle, outroText, agreementText } = siteContent.policies;
