@@ -25,13 +25,15 @@ export default function Header() {
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-serif font-bold tracking-tight">
+        <Link href="/" className="text-2xl font-bold tracking-tight font-vogue">
           {siteContent.brandName}
         </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center space-x-8">
-          {siteContent.navLinks.map((link) => (
+          {siteContent.navLinks
+            .filter((link) => link.href !== "/book")
+            .map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -68,7 +70,9 @@ export default function Header() {
             className="absolute top-full left-0 right-0 bg-white border-b shadow-lg md:hidden"
           >
             <nav className="flex flex-col p-6 space-y-4">
-              {siteContent.navLinks.map((link) => (
+              {siteContent.navLinks
+                .filter((link) => link.href !== "/book")
+                .map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}

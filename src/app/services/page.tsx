@@ -33,17 +33,18 @@ export default function ServicesPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
         {siteContent.services.map((category) => (
           <div key={category.id} className="space-y-8">
-            <div className="border-b border-gray-200 pb-4 mb-8">
+            <div className="border-b border-gray-200 pb-4 mb-4">
               <h2 className="text-3xl font-serif font-medium">{category.title}</h2>
               <p className="text-gray-500 mt-2">{category.description}</p>
-              {category.note && (
-                <p className="text-sm text-gray-400 mt-2 italic bg-gray-50 p-3 rounded-lg inline-block">
-                  {category.note}
-                </p>
-              )}
             </div>
 
-            <div className="space-y-6">
+            {category.note && (
+              <p className="text-sm text-gray-400 italic bg-gray-50 p-3 rounded-lg inline-block">
+                {category.note}
+              </p>
+            )}
+
+            <div className={category.id === "makeup" ? "space-y-10" : "space-y-6"}>
               {category.items.map((item, index) => (
                 <div
                   key={index}
@@ -73,7 +74,7 @@ export default function ServicesPage() {
         ))}
       </div>
 
-      <div className="mt-20 md:mt-32 max-w-4xl mx-auto bg-gray-50 rounded-3xl p-8 md:p-16 text-center">
+      <div className="mt-14 md:mt-24 max-w-4xl mx-auto bg-gray-50 rounded-3xl p-8 md:p-16 text-center">
         <h2 className="text-3xl font-serif font-bold mb-6">Ready to book?</h2>
         <p className="text-gray-500 mb-8 max-w-lg mx-auto">
           Secure your appointment today. A deposit is required for all bookings.

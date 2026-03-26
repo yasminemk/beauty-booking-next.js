@@ -51,3 +51,5 @@ Place your images in `public/gallery/` and update the paths in `src/content/site
 - Colors and fonts are configured in `tailwind.config.ts` and `src/app/globals.css`.
 - The theme uses `Inter` (sans) and `Playfair Display` (serif).
 # beauty-booking-next.js
+
+

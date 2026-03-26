@@ -1,4 +1,5 @@
 import Gallery from "@/components/Gallery";
+import Link from "next/link";
 
 export default function GalleryPage() {
   return (
@@ -8,6 +9,20 @@ export default function GalleryPage() {
         <p className="text-gray-500 text-lg">
           A glimpse into our studio and the transformations we create.
         </p>
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link
+            href="/policies"
+            className="bg-white text-black border border-black px-8 py-3 rounded-[var(--radius)] font-medium hover:bg-gray-50 transition-all"
+          >
+            Read Policies
+          </Link>
+          <Link
+            href="/book"
+            className="bg-black text-white px-8 py-3 rounded-[var(--radius)] font-medium hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl"
+          >
+            Book Now
+          </Link>
+        </div>
       </div>
       
       <Gallery />

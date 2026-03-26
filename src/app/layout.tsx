@@ -19,7 +19,7 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: siteContent.brandName,
-  description: siteContent.hero.subtitle,
+  description: siteContent.hero.title,
 };
 
 export default function RootLayout({

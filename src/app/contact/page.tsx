@@ -45,10 +45,14 @@ export default function ContactPage() {
         </div>
 
         <div className="bg-gray-50 rounded-3xl p-8 md:p-12 h-full min-h-[400px]">
-          {/* Map Placeholder */}
-          <div className="w-full h-full bg-white rounded-2xl flex items-center justify-center text-gray-400">
-            Map Placeholder
-          </div>
+          <iframe
+            title="Map of Greater Manchester (M7)"
+            className="w-full h-full bg-white rounded-2xl"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=M7%20Salford%20Greater%20Manchester&output=embed"
+            allowFullScreen
+          />
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import { siteContent } from "@/content/siteContent";
+import Link from "next/link";
 import { Mail, MapPin, Instagram } from "lucide-react";
 
 export default function BookPage() {
@@ -10,8 +11,19 @@ export default function BookPage() {
           We look forward to welcoming you to {siteContent.brandName}.
         </p>
 
+        <p className="mb-6 font-medium">
+          By choosing to book with us, you are agreeing to all of the{" "}
+          <Link
+            href="/policies"
+            className="underline decoration-gray-300 underline-offset-4 hover:decoration-black transition-all"
+          >
+            policies
+          </Link>
+          .
+        </p>
+
         <div className="bg-white rounded-[var(--radius)] p-8 shadow-sm mb-12">
-          <p className="mb-6 font-medium">To book, please use our online booking system or contact us directly.</p>
+          <p className="mb-6 font-medium">Please use the button below or contact us directly to book.</p>
           
           <button className="bg-black text-white w-full py-4 rounded-[var(--radius)] font-medium hover:bg-gray-800 transition-all mb-4">
             Book Now

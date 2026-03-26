@@ -69,7 +69,7 @@ export interface SiteContent {
 export const siteContent: SiteContent = {
   brandName: process.env.NEXT_PUBLIC_BRAND_NAME || "LKSTUDIOUK",
   contact: {
-    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact@lkstudiouk.com",
+    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "lkstudiouk@gmail.com",
     instagram: process.env.NEXT_PUBLIC_INSTAGRAM_HANDLE || "@lkstudio_uk",
     address: process.env.NEXT_PUBLIC_ADDRESS || "Salford, Greater Manchester",
   },
@@ -85,7 +85,7 @@ export const siteContent: SiteContent = {
   ],
   hero: {
     title: "Enhancing Your Natural Beauty",
-    subtitle: "Tagline TBC",
+    subtitle: "",
     cta: "Book Now",
   },
   services: [
@@ -128,7 +128,7 @@ export const siteContent: SiteContent = {
     {
       id: "makeup",
       title: "Makeup Services",
-      note: "Note: Lashes are included with every appointment; however, clients are welcome to provide their own if preferred.",
+      note: "Note: Lashes are included with every appointment. However, clients are welcome to provide their own if preferred.",
       items: [
         {
           name: "Natural Glam",
@@ -151,9 +151,9 @@ export const siteContent: SiteContent = {
   gallery: [
     {
       id: "case1",
-      title: "Natural Glam Transformation",
-      before: { src: "/gallery/case1-before.jpg", alt: "Before Natural Glam" },
-      after: { src: "/gallery/case1-after.jpg", alt: "After Natural Glam" }
+      title: "Soft Glam Transformation",
+      before: { src: "/gallery/case1-before.jpg", alt: "Before Soft Glam" },
+      after: { src: "/gallery/case1-after.jpg", alt: "After Soft Glam" }
     },
     {
       id: "case2",
@@ -163,9 +163,9 @@ export const siteContent: SiteContent = {
     },
     {
       id: "case3",
-      title: "Soft Glam Look",
-      before: { src: "/gallery/case3-before.jpg", alt: "Before Soft Glam" },
-      after: { src: "/gallery/case3-after.jpg", alt: "After Soft Glam" }
+      title: "Full Glam Look",
+      before: { src: "/gallery/case3-before.jpg", alt: "Before Full Glam" },
+      after: { src: "/gallery/case3-after.jpg", alt: "After Full Glam" }
     },
   ],
   policies: {
@@ -206,7 +206,7 @@ export const siteContent: SiteContent = {
     ],
     outroTitle: "Thank You For Choosing LKSTUDIOUK",
     outroText: "We truly appreciate your understanding and cooperation. These policies are in place to give every client the attention, time and service they deserve. We can't wait to create a look you'll love, thank you for choosing us!",
-    agreementText: "By choosing to book with us, you are agreeing to all of the above policies"
+    agreementText: "By choosing to book with us, you are agreeing to all of the above policies."
   },
   testimonials: [
     {
@@ -215,9 +215,9 @@ export const siteContent: SiteContent = {
       rating: 5,
     },
     {
-      name: "Lisur",
-      text: "Best lash lift I've ever had. Highly recommend!",
-      rating: 5,
+      name: "Daniela",
+      text: "My full glam look really made my birthday!!",
+      rating: 4,
     },
   ],
 };
