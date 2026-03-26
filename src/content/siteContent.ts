@@ -46,6 +46,11 @@ export interface Testimonial {
   rating: number;
 }
 
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
 export interface SiteContent {
   brandName: string;
   contact: {
@@ -55,6 +60,8 @@ export interface SiteContent {
   };
   navLinks: { label: string; href: string }[];
   footerLinks: { label: string; href: string }[];
+  setmoreBookingUrl: string;
+  bookingFaq: FaqItem[];
   hero: {
     title: string;
     subtitle: string;
@@ -82,6 +89,29 @@ export const siteContent: SiteContent = {
   footerLinks: [
     { label: "Contact", href: "/contact" },
     { label: "Policies", href: "/policies" },
+  ],
+  setmoreBookingUrl: "SETMORE_BOOKING_URL",
+  bookingFaq: [
+    {
+      question: "Do you require a deposit?",
+      answer:
+        "Yes. A deposit is required to secure your appointment and will be deducted from your final total. Please see our Policies for full details.",
+    },
+    {
+      question: "What is your cancellation policy?",
+      answer:
+        "We kindly ask for notice if you need to cancel or reschedule. Cancellation/rescheduling terms are outlined in our Policies.",
+    },
+    {
+      question: "What if no slots are showing?",
+      answer:
+        "If no availability is showing, it usually means all appointments are currently booked. Please check back later as new slots may be released, or contact us and we’ll do our best to help.",
+    },
+    {
+      question: "Do I need a patch test for brow services?",
+      answer:
+        "For brow services that involve tint/stain, a patch test may be required. If you’re unsure, please contact us before booking so we can advise based on the treatment and your skin sensitivity.",
+    },
   ],
   hero: {
     title: "Enhancing Your Natural Beauty",

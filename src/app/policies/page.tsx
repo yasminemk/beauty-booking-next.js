@@ -4,6 +4,24 @@ import Link from "next/link";
 export default function PoliciesPage() {
   const { intro, items, outroTitle, outroText, agreementText } = siteContent.policies;
 
+  const renderWithContactLink = (text: string) => {
+    const parts = text.split(/(contact us)/gi);
+    return parts.map((part, i) => {
+      if (/^contact us$/i.test(part)) {
+        return (
+          <Link
+            key={`contact-${i}`}
+            href="/contact"
+            className="underline decoration-gray-300 underline-offset-4 hover:decoration-black transition-all"
+          >
+            {part}
+          </Link>
+        );
+      }
+      return <span key={`text-${i}`}>{part}</span>;
+    });
+  };
+
   return (
     <div className="container mx-auto px-4 py-20 md:py-32">
       <div className="max-w-3xl mx-auto">
@@ -46,12 +64,12 @@ export default function PoliciesPage() {
 
                       return (
                         <>
-                          <p className="mb-6">{introText}</p>
+                          <p className="mb-6">{renderWithContactLink(introText)}</p>
                           <ul className="space-y-4">
                             {listItems.map((item, i) => (
                               <li key={i} className="flex items-start group">
                                 <span className="mr-4 mt-2 w-1.5 h-1.5 bg-black rounded-full shrink-0 group-hover:scale-125 transition-transform duration-300" />
-                                <span>{item}</span>
+                                <span>{renderWithContactLink(item)}</span>
                               </li>
                             ))}
                           </ul>
@@ -61,7 +79,7 @@ export default function PoliciesPage() {
                   </div>
                 ) : (
                   <div className="text-gray-600 leading-relaxed whitespace-pre-line">
-                    {policy.content}
+                    {renderWithContactLink(policy.content)}
                   </div>
                 )}
               </div>
