@@ -9,10 +9,8 @@ test("Home page loads and Book Now CTA navigates to /book", async ({ page }) => 
   await expect(page).toHaveURL(/\/book$/);
 });
 
-test("Contact form validates empty submit and shows success after mocked submission", async ({
-  page,
-}) => {
-  await page.goto("/contact");
+test("Contact form validates empty submit and shows success after mocked submission", async ({ page }) => {
+  await page.goto("/contact", { waitUntil: "domcontentloaded" });
 
   await page.getByRole("button", { name: /send message/i }).click();
   await expect(page.getByText("Name is required.")).toBeVisible();
@@ -34,4 +32,3 @@ test("Contact form validates empty submit and shows success after mocked submiss
   await page.getByRole("button", { name: /send message/i }).click();
   await expect(page.getByText("Thanks — we’ve received your message.")).toBeVisible();
 });
-

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { siteContent } from "@/content/siteContent";
+import { siteContent } from "@/config/siteContent";
 
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = siteContent.siteUrl.replace(/\/$/, "");
@@ -15,4 +15,3 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: `${baseUrl}/sitemap.xml`,
   };
 }
-

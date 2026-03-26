@@ -1,4 +1,4 @@
-import { siteContent } from "@/content/siteContent";
+import { siteContent } from "@/config/siteContent";
 import { Mail, MapPin, Instagram } from "lucide-react";
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";

@@ -5,6 +5,9 @@
 
 # Testing
 /coverage
+/test-results
+/test-suite/test-results
+/test-suite/test-report
 
 # Next.js
 /.next/

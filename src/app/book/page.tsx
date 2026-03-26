@@ -1,4 +1,4 @@
-import { siteContent } from "@/content/siteContent";
+import { siteContent } from "@/config/siteContent";
 import Link from "next/link";
 import type { Metadata } from "next";
 

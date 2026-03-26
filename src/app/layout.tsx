@@ -3,7 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { siteContent } from "@/content/siteContent";
+import { siteContent } from "@/config/siteContent";
 
 const inter = Inter({
   subsets: ["latin"],

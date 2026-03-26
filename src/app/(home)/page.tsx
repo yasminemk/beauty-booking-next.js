@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { siteContent, ServiceCategory, Testimonial } from "@/content/siteContent";
+import { siteContent, ServiceCategory, Testimonial } from "@/config/siteContent";
 import { ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -36,11 +36,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      {/* Hero Section */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <section className="w-full h-[80vh] flex flex-col items-center justify-center text-center bg-gray-50 px-4">
         <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 tracking-tight animate-fade-in">
           {siteContent.hero.title}
@@ -61,7 +57,6 @@ export default function Home() {
         </Link>
       </section>
 
-      {/* Featured Services Preview */}
       <section className="w-full py-20 px-4 md:px-8">
         <div className="container mx-auto">
           <div className="flex justify-between items-end mb-12">
@@ -69,7 +64,10 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Our Services</h2>
               <p className="text-gray-500">Tailored treatments for your unique beauty</p>
             </div>
-            <Link href="/services" className="hidden md:flex items-center text-sm font-medium border-b border-black pb-1 hover:text-gray-600 transition-colors">
+            <Link
+              href="/services"
+              className="hidden md:flex items-center text-sm font-medium border-b border-black pb-1 hover:text-gray-600 transition-colors"
+            >
               View All <ArrowRight size={16} className="ml-2" />
             </Link>
           </div>
@@ -84,7 +82,6 @@ export default function Home() {
                 >
                   <div className="h-60 md:h-72 bg-gray-100 rounded-[var(--radius)] mb-5 overflow-hidden relative">
                     <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors" />
-                    {/* Placeholder for service image if we had one per category */}
                     <div className="absolute inset-0 flex items-center justify-center text-gray-300">
                       <span className="font-serif text-3xl italic">{category.title}</span>
                     </div>
@@ -92,9 +89,7 @@ export default function Home() {
                   <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0">
                       <h3 className="text-lg font-serif font-medium mb-2">{category.title}</h3>
-                      {category.description ? (
-                        <p className="text-gray-500 text-sm">{category.description}</p>
-                      ) : null}
+                      {category.description ? <p className="text-gray-500 text-sm">{category.description}</p> : null}
                     </div>
                     <ArrowRight
                       size={18}
@@ -105,7 +100,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-          
+
           <div className="mt-12 text-center md:hidden">
             <Link href="/services" className="inline-flex items-center text-sm font-medium border-b border-black pb-1">
               View All Services <ArrowRight size={16} className="ml-2" />
@@ -114,7 +109,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
       <section className="w-full py-20 bg-gray-50 px-4">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-serif font-bold mb-16">Client Love</h2>
@@ -136,3 +130,4 @@ export default function Home() {
     </div>
   );
 }
+
