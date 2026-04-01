@@ -1,9 +1,11 @@
+// Imports/libraries
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { siteContent } from "@/config/siteContent";
+import BackToTop from "@/components/BackToTop";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,6 +19,7 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
+//Metadata & tagging
 export const metadata: Metadata = {
   metadataBase: new URL(siteContent.siteUrl),
   title: {
@@ -33,6 +36,7 @@ export const metadata: Metadata = {
   },
 };
 
+//Root
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -43,6 +47,7 @@ export default function RootLayout({
       <body className="antialiased bg-white text-gray-900 flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow pt-20">{children}</main>
+        <BackToTop />
         <Footer />
       </body>
     </html>

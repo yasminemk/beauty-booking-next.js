@@ -1,3 +1,4 @@
+/* Libraries */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,6 +7,7 @@
   --background: #ffffff;
   --foreground: #1a1a1a;
   --radius: 0.3rem;
+  --radius-card: 0.6rem;
   --font-inter: 'Inter', sans-serif;
   --font-playfair: 'Playfair Display', serif;
 }

@@ -13,7 +13,7 @@ export default defineConfig({
     navigationTimeout: 30000,
   },
   webServer: {
-    command: "npm run build && npm run start -- -p 3000",
+    command: "npm run start -- -p 3000",
     url: "http://localhost:3000",
     reuseExistingServer: true,
   },

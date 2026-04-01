@@ -1,7 +1,10 @@
+// Imports/libraries
 import { siteContent } from "@/config/siteContent";
 import Link from "next/link";
 import type { Metadata } from "next";
+import Image from "next/image";
 
+// Metadata & tagging
 export const metadata: Metadata = {
   title: "Our Policies",
   description: "Read our booking policies before securing your appointment.",
@@ -12,6 +15,7 @@ export const metadata: Metadata = {
   },
 };
 
+// Main Content
 export default function PoliciesPage() {
   const { intro, items, outroTitle, outroText, agreementText } = siteContent.policies;
 
@@ -34,19 +38,43 @@ export default function PoliciesPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-20 md:py-32">
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-center">Our Policies</h1>
-        <p className="text-gray-500 text-lg text-center mb-16 leading-relaxed">
-          {intro}
-        </p>
+    <div className="w-full">
+      <section className="relative isolate w-full overflow-hidden">
+        <Image
+          src="/images/grouppic1.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-[center_95%]"
+        />
+        <div className="absolute inset-0 bg-black/65" />
 
-        <div className="space-y-4">
-          {items.map((policy, index) => (
-            <details
-              key={index}
-              className="border-b border-gray-100 last:border-0"
-            >
+        <div className="relative container mx-auto px-4 py-16 md:py-24">
+          <div className="max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-center text-white">Our Policies</h1>
+            <p className="text-white/80 text-lg text-center leading-relaxed">
+              {intro}
+            </p>
+            <div className="mt-8 flex justify-center">
+              <Link
+                href="/book"
+                className="bg-white text-black border border-white px-8 py-3 rounded-[var(--radius)] font-medium hover:bg-white/90 transition-all shadow-lg hover:shadow-xl"
+              >
+                Book Now
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="container mx-auto px-4 py-20 md:py-32">
+        <div className="max-w-3xl mx-auto">
+          <div className="space-y-4">
+            {items.map((policy, index) => (
+              <details
+                key={index}
+                className="border-b border-gray-100 last:border-0"
+              >
               {policy.title === "Prep For Your Appointment" ? (
                 <summary className="list-none cursor-pointer py-3">
                   <div className="flex items-center justify-center gap-3 text-gray-900">
@@ -94,29 +122,43 @@ export default function PoliciesPage() {
                   </div>
                 )}
               </div>
-            </details>
-          ))}
-        </div>
-
-        <div className="mt-20 pt-12 border-t border-gray-200 text-center">
-          <h3 className="text-2xl font-serif font-medium mb-4">{outroTitle}</h3>
-          <p className="text-gray-500 text-sm mb-12 max-w-2xl mx-auto">
-            {outroText}
-          </p>
-          
-          <p className="font-bold text-lg">
-            {agreementText}
-          </p>
-          <div className="mt-8">
-            <Link
-              href="/book"
-              className="inline-flex items-center bg-black text-white px-8 py-4 rounded-[var(--radius)] font-medium hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl"
-            >
-              Book Now
-            </Link>
+              </details>
+            ))}
           </div>
         </div>
       </div>
+
+      <section className="relative isolate w-full overflow-hidden">
+        <Image
+          src="/images/grouppic1.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-[center_95%]"
+        />
+        <div className="absolute inset-0 bg-black/65" />
+
+        <div className="relative container mx-auto px-4 py-20 md:py-32">
+          <div className="max-w-3xl mx-auto text-center">
+            <h3 className="text-2xl font-serif font-medium mb-4 text-white">{outroTitle}</h3>
+            <p className="text-white/80 text-sm mb-12 max-w-2xl mx-auto">
+              {outroText}
+            </p>
+            
+            <p className="font-bold text-lg text-white">
+              {agreementText}
+            </p>
+            <div className="mt-8">
+              <Link
+                href="/book"
+                className="inline-flex items-center bg-white text-black border border-white px-8 py-4 rounded-[var(--radius)] font-medium hover:bg-white/90 transition-all shadow-lg hover:shadow-xl"
+              >
+                Book Now
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

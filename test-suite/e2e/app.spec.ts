@@ -1,3 +1,13 @@
+/**
+ * E2E tests for critical user journeys.
+ * API routes are mocked, no real credentials or network calls are needed.
+ *
+ * Tests:
+ * 1. Home page loads and Book Now CTA navigates to /book
+ * 2. Contact form shows validation errors on empty submit,
+ *    and shows success message after a valid mocked submission
+ */
+
 import { test, expect } from "@playwright/test";
 
 test("Home page loads and Book Now CTA navigates to /book", async ({ page }) => {

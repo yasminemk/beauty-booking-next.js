@@ -1,4 +1,8 @@
-
+/**
+ * Contains interfaces for each variable
+ * Contains Setmore url (insert)
+ * Contains editable text for content on pages
+ */
 export interface ServiceItem {
   name: string;
   price: string;
@@ -195,22 +199,22 @@ export const siteContent: SiteContent = {
   ],
   gallery: [
     {
-      id: "case1",
-      title: "Soft Glam Transformation",
-      before: { src: "/gallery/case1-before.jpg", alt: "Before Soft Glam" },
-      after: { src: "/gallery/case1-after.jpg", alt: "After Soft Glam" },
-    },
-    {
       id: "case2",
       title: "Brow Lamination",
-      before: { src: "/gallery/case2-before.jpg", alt: "Before Brow Lamination" },
-      after: { src: "/gallery/case2-after.jpg", alt: "After Brow Lamination" },
+      before: { src: "/gallery/case2/before.jpg", alt: "Before Brow Lamination" },
+      after: { src: "/gallery/case2/after.jpg", alt: "After Brow Lamination" },
+    },
+    {
+      id: "case1",
+      title: "Soft Glam Transformation",
+      before: { src: "/gallery/case1/before.jpg", alt: "Before Soft Glam" },
+      after: { src: "/gallery/case1/after.jpg", alt: "After Soft Glam" },
     },
     {
       id: "case3",
       title: "Full Glam Look",
-      before: { src: "/gallery/case3-before.jpg", alt: "Before Full Glam" },
-      after: { src: "/gallery/case3-after.jpg", alt: "After Full Glam" },
+      before: { src: "/gallery/case3/before.jpg", alt: "Before Full Glam" },
+      after: { src: "/gallery/case3/after.jpg", alt: "After Full Glam" },
     },
   ],
   policies: {
@@ -276,4 +280,3 @@ export const siteContent: SiteContent = {
     },
   ],
 };
-

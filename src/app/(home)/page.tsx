@@ -1,8 +1,11 @@
+// Imports/Libraries
 import Link from "next/link";
 import { siteContent, ServiceCategory, Testimonial } from "@/config/siteContent";
 import { ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 
+// Metadata & tagging
 export const metadata: Metadata = {
   title: "Home",
   description: "Makeup artist and brow specialist in Salford, Manchester (M7).",
@@ -13,7 +16,13 @@ export const metadata: Metadata = {
   },
 };
 
+//Main Content
 export default function Home() {
+  const categoryImageById: Record<string, { src: string; alt: string }> = {
+    brows: { src: "/images/brows1.JPEG", alt: "Brow services" },
+    makeup: { src: "/images/glam4.jpg", alt: "Makeup services" },
+  };
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -37,19 +46,29 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <section className="w-full h-[80vh] flex flex-col items-center justify-center text-center bg-gray-50 px-4">
-        <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 tracking-tight animate-fade-in">
+      <section className="relative isolate w-full h-[80vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+        <Image
+          src="/images/grouppic1.jpg"
+          alt=""
+          fill
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-black/65" />
+        <h1 className="relative text-5xl md:text-7xl font-serif font-bold mb-6 tracking-tight animate-fade-in text-white">
           {siteContent.hero.title}
         </h1>
         {siteContent.hero.subtitle ? (
-          <p className="text-lg md:text-xl text-gray-500 max-w-2xl mb-10 animate-slide-up">
+          <p className="relative text-lg md:text-xl text-white/80 max-w-2xl mb-10 animate-slide-up">
             {siteContent.hero.subtitle}
           </p>
         ) : null}
         <Link
           href="/book"
           data-testid="primary-book-cta"
-          className={`bg-black text-white px-8 py-4 rounded-[var(--radius)] text-lg font-medium hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl animate-slide-up ${
+          className={`relative bg-white text-black px-8 py-4 rounded-[var(--radius)] text-lg font-medium hover:bg-white/90 transition-all shadow-lg hover:shadow-xl animate-slide-up ${
             siteContent.hero.subtitle ? "" : "mt-4"
           }`}
         >
@@ -78,13 +97,32 @@ export default function Home() {
                 <Link
                   key={category.id}
                   href="/services"
-                  className="group block border border-gray-200 rounded-[var(--radius)] p-4 transition-all hover:border-gray-300 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
+                  className="group block border border-gray-200 rounded-[var(--radius-card)] p-4 transition-all hover:border-gray-300 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
                 >
-                  <div className="h-60 md:h-72 bg-gray-100 rounded-[var(--radius)] mb-5 overflow-hidden relative">
-                    <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors" />
-                    <div className="absolute inset-0 flex items-center justify-center text-gray-300">
-                      <span className="font-serif text-3xl italic">{category.title}</span>
-                    </div>
+                  <div className="h-60 md:h-72 bg-gray-100 rounded-[var(--radius-card)] mb-5 overflow-hidden relative">
+                    {categoryImageById[category.id] ? (
+                      <>
+                        <Image
+                          src={categoryImageById[category.id].src}
+                          alt={categoryImageById[category.id].alt}
+                          fill
+                          sizes="(min-width: 768px) 50vw, 100vw"
+                          className={
+                            category.id === "makeup"
+                              ? "object-cover scale-[1.12] object-[center_10%]"
+                              : "object-cover"
+                          }
+                        />
+                        <div className="absolute inset-0 bg-black/25 group-hover:bg-black/15 transition-colors" />
+                      </>
+                    ) : (
+                      <>
+                        <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors" />
+                        <div className="absolute inset-0 flex items-center justify-center text-gray-300">
+                          <span className="font-serif text-3xl italic">{category.title}</span>
+                        </div>
+                      </>
+                    )}
                   </div>
                   <div className="flex items-start justify-between gap-4">
                     <div className="min-w-0">
@@ -130,4 +168,3 @@ export default function Home() {
     </div>
   );
 }
-
