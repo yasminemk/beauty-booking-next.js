@@ -38,7 +38,7 @@ export default function BookPage() {
             href="/policies"
             className="underline decoration-gray-300 underline-offset-4 hover:decoration-black transition-all"
           >
-            {part}
+            policies
           </Link>
         );
       }

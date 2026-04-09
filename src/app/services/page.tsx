@@ -1,7 +1,7 @@
 // Libraries
 import { siteContent } from "@/config/siteContent";
 import Link from "next/link";
-import { Clock, ArrowRight } from "lucide-react";
+import { Clock } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 
@@ -61,7 +61,7 @@ export default function ServicesPage() {
       <div className="container mx-auto px-4 py-20 md:py-32">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
           {siteContent.services.map((category) => (
-            <div key={category.id} className="space-y-8">
+            <div key={category.id} id={category.id} className="space-y-8 scroll-mt-28">
               <div className="border-b border-gray-200 pb-4 mb-4">
                 <h2 className="text-3xl font-serif font-medium">{category.title}</h2>
                 <p className="text-gray-500 mt-2">{category.description}</p>
@@ -124,7 +124,7 @@ export default function ServicesPage() {
               href="/book"
               className="inline-flex items-center bg-white text-black border border-white px-8 py-4 rounded-[var(--radius)] font-medium hover:bg-white/90 transition-all shadow-lg hover:shadow-xl"
             >
-              Book Appointment <ArrowRight size={18} className="ml-2" />
+              Book Now
             </Link>
           </div>
         </div>

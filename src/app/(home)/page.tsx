@@ -96,7 +96,7 @@ export default function Home() {
               {siteContent.services.slice(0, 2).map((category: ServiceCategory) => (
                 <Link
                   key={category.id}
-                  href="/services"
+                  href={`/services#${category.id}`}
                   className="group block border border-gray-200 rounded-[var(--radius-card)] p-4 transition-all hover:border-gray-300 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
                 >
                   <div className="h-60 md:h-72 bg-gray-100 rounded-[var(--radius-card)] mb-5 overflow-hidden relative">

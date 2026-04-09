@@ -222,6 +222,11 @@ export const siteContent: SiteContent = {
       "To give you the best experience possible, we kindly ask that you read and follow our policies before securing your appointment. These guidelines help us provide a smooth, respectful and high-quality service to every client.",
     items: [
       {
+        title: "Prep For Your Appointment",
+        content:
+          "To get the best results, here's how to prepare:\n- Arrive with a clean, fresh, makeup-free face\n- Groomed eyebrows are recommended as they enhance the final look\n- Please notify us of any allergies or product sensitivities at the time of booking so we can prepare accordingly\n- As we are currently perfecting our craft, we kindly ask that you bring your foundation shade with you. If you're unsure of your shade or need help choosing one, please contact us before booking, we're happy to help!",
+      },
+      {
         title: "Deposits",
         content:
           "A £10 non-refundable deposit is required to secure your appointment. This will go towards your final payment. Your booking will not be confirmed until this deposit is received.",
@@ -255,11 +260,6 @@ export const siteContent: SiteContent = {
         title: "No Extra Guests",
         content:
           "Please do not bring any plus-ones unless you've both booked appointments together. This helps us maintain a calm, focused and professional environment.",
-      },
-      {
-        title: "Prep For Your Appointment",
-        content:
-          "To get the best results, here's how to prepare:\n- Arrive with a clean, fresh, makeup-free face\n- Groomed eyebrows are recommended as they enhance the final look\n- Please notify us of any allergies or product sensitivities at the time of booking so we can prepare accordingly\n- As we are currently perfecting our craft, we kindly ask that you bring your foundation shade with you. If you're unsure of your shade or need help choosing one, please contact us before booking, we're happy to help!",
       },
     ],
     outroTitle: "Thank You For Choosing LKSTUDIOUK",

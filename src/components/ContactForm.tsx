@@ -136,9 +136,9 @@ export default function ContactForm() {
         <textarea
           id="message"
           name="message"
-          rows={8}
+          rows={6}
           maxLength={2000}
-          className="w-full bg-white border border-gray-200 rounded-[var(--radius)] px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black/10 resize-y min-h-[240px] md:min-h-[320px] flex-1"
+          className="w-full bg-white border border-gray-200 rounded-[var(--radius)] px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black/10 resize-y min-h-[160px] md:min-h-[260px]"
         />
       </div>
 

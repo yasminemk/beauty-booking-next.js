@@ -67,7 +67,7 @@ export default function PoliciesPage() {
         </div>
       </section>
 
-      <div className="container mx-auto px-4 py-20 md:py-32">
+      <div className="container mx-auto px-4 pt-14 pb-20 md:pt-20 md:pb-32">
         <div className="max-w-3xl mx-auto">
           <div className="space-y-4">
             {items.map((policy, index) => (
@@ -76,7 +76,7 @@ export default function PoliciesPage() {
                 className="border-b border-gray-100 last:border-0"
               >
               {policy.title === "Prep For Your Appointment" ? (
-                <summary className="list-none cursor-pointer py-3">
+                <summary className="list-none cursor-pointer pt-3 pb-10">
                   <div className="flex items-center justify-center gap-3 text-gray-900">
                     <h2 className="text-2xl font-serif font-medium text-center">{policy.title}</h2>
                     <span aria-hidden className="text-gray-400 text-lg leading-none">
