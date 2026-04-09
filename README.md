@@ -34,7 +34,7 @@ A minimal luxury, config-driven Next.js website for a beauty business.
     npm start
     ```
 
-## Customization
+## Customisation
 
 ### Content
 Edit `src/content/siteContent.ts` to update:
@@ -52,5 +52,6 @@ Place your images in `public/gallery/` and update the paths in `src/content/site
 - The theme uses `Inter` (sans) and `Playfair Display` (serif).
 # beauty-booking-next.js
 
+(For myself)
 Open Preview
 http://localhost:3000
